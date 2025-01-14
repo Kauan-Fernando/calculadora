@@ -3,87 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            background-image: radial-gradient(circle, rgb(78, 78, 78), black);
-        }
-    #container {
+    <style>body {
+        background-image: radial-gradient(circle, rgb(78, 78, 78), black);
+        margin: 0%;
+    }
+    #header {
         display: flex;
-        
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        flex-wrap: wrap;
+    
+    
+    }
+    #dentro {
+        background-color: black;
+        color: white;
+        width: 100%;
+        text-align: center;
+        height: 100px;
+    }
+    
+    #container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    
     }
     button {
-        background-color: yellowgreen;
-        width: 50%;
+    background-color: gray;
+    width: 200px;
+    margin-top: 20px;
+    
     
     
     }
     
-    #bt-b {
-        margin-bottom: 5px;
+    label {
+        color: white;
+        margin: 10px;
+        font-size: 40px;
+        text-align: center;
     }
-    #tp {
-        margin-top: 5px;
+    input {
+        width: 130px;
+        height: 15px;
+        background-color: red;
     }
     p {
-        color: white;
-        font-size: larger;
+    color: white;
+    font-size: larger;
     }
     </style>
     <title>Java script</title>
 </head>
 <body>
+    <div id="header">
+        <div id="dentro">
+    <h1>calcule sua taxa metabolica basal(TMB)</h1>
+        </div>
+    </div>
 <div id="container">
-    <h1>sua calculadora de somas</h1>
-    <button class="bt1" onclick="acress()">+</button>
-    <button id="bt-b" class="bt1" onclick="decress()">-</button>
-    <p id="decre">0</p>
-    <button class="bt2" onclick="acressaa()">+</button>
-    <button class="bt2" onclick="decressaa()">-</button>
-    <p id="number2">0</p>
-    <button id="tp" class="bt2" onclick="somar()">=</button>
     
-    
-    <p id="soma1">0</p>
+    <label for="genero">Seu genero: <br> (masculino) ou
+        (feminino) </label>
+    <input type="text" id="genero">
+    <label for="idade">Sua idade:</label>
+    <input type="text" id="idade">
+    <label for="peso">Seu Peso: </label>
+    <input type="text" id="peso">
+    <label for="altura">Sua altura <br> em centímetros:</label>
+    <input type="text" id="altura">
+    <button id="calcular" onclick="calc ()">Calcular</button>
+    <p id="result"></p>
+
+</div>
     <script>
-        let add = 0
-function acress() {
+    function calc () {
+        let age = document.getElementById('idade').value
+        let gen = document.getElementById('genero').value
+        let height = document.getElementById('altura').value
+        let weight =document.getElementById('peso').value 
+        let tmb = ''
+        if (gen == 'masculino') {
+            tmb = `${88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age)}`
+        
+        }
+        else if (gen == 'feminino'){
+            tmb = `${447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age)}`
+        }
+        return document.querySelector('#result').innerHTML = "Sua taxa metabolica basal é de: " + tmb + ' calorias'
     
-    let p = document.querySelector('#decre') 
-    add++
-
- p.innerHTML = add   
-}
-function decress(){
-    let pp = document.querySelector('#decre')
-    add--
-    pp.innerHTML = add   
-}
-
-
-
-let number2 = 0
-function acressaa() {
+    }
     
-    let ppp = document.querySelector('#number2') 
-    number2++
-
- ppp.innerHTML = number2 
-}
-function decressaa(){
-    let ppp = document.querySelector('#number2')
-    number2--
-    ppp.innerHTML = number2   
-}
-function somar() {
-    let number1 = (document.querySelector('#decre').innerHTML)
-    let number2 = (document.querySelector('#number2').innerHTML)
-    let transnum = parseInt(number1)
-    let transnum2 = parseInt(number2)
-    let soma = transnum + transnum2;
-    return document.querySelector('#soma1').innerHTML = soma
-}
     </script>
    
 
