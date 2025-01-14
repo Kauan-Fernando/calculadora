@@ -85,11 +85,11 @@
         let height = document.getElementById('altura').value
         let weight =document.getElementById('peso').value 
         let tmb = ''
-        if (gen == 'masculino') {
+        if (gen == 'masculino' || 'Masculino') {
             tmb = `${88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age)}`
         
         }
-        else if (gen == 'feminino'){
+        else if (gen == 'feminino' || 'Feminino'){
             tmb = `${447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age)}`
         }
         return document.querySelector('#result').innerHTML = "Sua taxa metabolica basal é de: " + tmb + ' calorias'
